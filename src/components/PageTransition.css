@@ -1,0 +1,27 @@
+.page-transition {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  will-change: transform;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.page-transition::-webkit-scrollbar {
+  width: 8px;
+}
+
+.page-transition::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.page-transition::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 4px;
+}
+
+.page-transition::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-border-soft);
+}

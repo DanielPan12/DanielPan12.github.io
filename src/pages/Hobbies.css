@@ -1,0 +1,91 @@
+.hobbies {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.hobbies__content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding-top: 130px;
+}
+
+.hobbies__header {
+  flex-shrink: 0;
+  margin-bottom: 32px;
+  padding: 0 8vw;
+}
+
+.hobbies__title {
+  margin: 0;
+}
+
+.hobbies__wall {
+  flex: 1;
+  min-height: 0;
+  cursor: pointer;
+}
+
+.hobbies__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hobbies__flyout {
+  position: fixed;
+  z-index: 51;
+  overflow: hidden;
+  background: #030305;
+  box-shadow: 0 60px 140px -30px rgba(0, 0, 0, 0.9);
+}
+
+.hobbies__flyout-stage {
+  position: absolute;
+  inset: 0;
+}
+
+.hobbies__flyout-stage .photo-carousel__arrow {
+  width: 44px;
+  height: 44px;
+}
+
+.hobbies__flyout-title {
+  position: absolute;
+  top: 20px;
+  left: 26px;
+  z-index: 2;
+  color: var(--color-text);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 0 24px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+.hobbies__flyout-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: none;
+  color: var(--color-text-dim);
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  transition: color 0.25s ease;
+}
+
+.hobbies__flyout-close:hover {
+  color: var(--color-text);
+}

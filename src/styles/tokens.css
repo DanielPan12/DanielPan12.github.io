@@ -1,0 +1,25 @@
+:root {
+  /* 深藏青 + 冷白/银灰 */
+  --color-bg: #070b14;
+  --color-bg-elevated: #0f1626;
+  --color-bg-elevated-2: #141d33;
+  --color-border: #232f47;
+  --color-border-soft: #1a2338;
+
+  --color-text: #eef2f7;
+  --color-text-dim: #97a3b8;
+  --color-text-faint: #5b667c;
+
+  --color-silver: #c7d0dc;
+  --color-accent: #7fa8d9;
+  --color-accent-strong: #a9c6e8;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  --font-sans: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  color-scheme: dark;
+}

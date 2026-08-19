@@ -1,0 +1,225 @@
+.projects {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.projects__background {
+  grid-area: 1 / 1;
+  z-index: 0;
+  pointer-events: none;
+  min-height: 100vh;
+  opacity: 0.6;
+}
+
+.projects__content {
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 130px 8vw 60px;
+}
+
+.projects__header {
+  margin-bottom: 40px;
+}
+
+.projects__title {
+  margin: 0 0 28px;
+}
+
+.projects__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.projects__wall {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+.project-bubble {
+  position: absolute;
+  /* Static anchor point the physics loop's `translate` moves from every
+     frame. left/top themselves are never touched again after this — they're
+     layout properties, and changing them on 13 elements every single frame
+     would force a full layout recalculation each frame (a real cost, and
+     enough to make the motion look like it's buzzing even when the
+     underlying numbers are smooth). `translate`, like `transform`, is
+     compositor-only, so the browser just re-positions the already-painted
+     layer instead. */
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  width: var(--size, 120px);
+  height: var(--size, 120px);
+  border-radius: 50%;
+  border: 1px solid var(--color-border-soft);
+  background: radial-gradient(
+    circle at 32% 26%,
+    color-mix(in srgb, var(--color-accent) 14%, var(--color-bg-elevated)) 0%,
+    color-mix(in srgb, var(--color-bg-elevated) 65%, transparent) 72%
+  );
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1), height 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.55s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease,
+    filter 0.4s ease, opacity 0.4s ease, border-radius 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.4s ease;
+}
+
+.project-bubble:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent),
+    0 18px 36px -16px color-mix(in srgb, var(--color-accent) 55%, transparent);
+}
+
+.project-bubble__badge {
+  position: absolute;
+  top: 18%;
+  right: 20%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 8px 1px color-mix(in srgb, var(--color-accent) 70%, transparent);
+}
+
+.project-bubble__name {
+  overflow-wrap: break-word;
+  font-weight: 500;
+  font-size: 1.02rem;
+  line-height: 1.32;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-bubble.is-dimmed {
+  opacity: 0.32;
+  filter: grayscale(1) brightness(0.42);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.project-bubble.is-dimmed:hover {
+  box-shadow: none;
+}
+
+.project-bubble.is-active {
+  width: min(600px, 88vw);
+  height: auto;
+  max-height: min(72vh, 560px);
+  min-height: 280px;
+  border-radius: 30px;
+  padding: 40px 44px;
+  cursor: default;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-y: auto;
+  background: var(--color-bg-elevated);
+  border-color: var(--color-accent);
+  box-shadow: 0 32px 80px -28px rgba(0, 0, 0, 0.6);
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.project-bubble__detail {
+  width: 100%;
+  position: relative;
+}
+
+.project-bubble__close {
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  color: var(--color-text-faint);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.project-bubble__close:hover {
+  color: var(--color-text);
+}
+
+.project-bubble__top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.project-bubble__title {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--color-text);
+  overflow-wrap: break-word;
+}
+
+.project-bubble__role {
+  margin: 0 0 16px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--color-accent-strong);
+}
+
+.project-bubble__summary {
+  margin: 20px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: var(--color-text-dim);
+  text-align: left;
+}
+
+.project-card__badge {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-accent) 22%, transparent);
+  color: var(--color-accent-strong);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
+.project-card__duration {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--color-text-faint);
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.project-card__tag {
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-soft);
+  font-size: 0.7rem;
+  color: var(--color-text-faint);
+}
+

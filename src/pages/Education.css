@@ -1,0 +1,173 @@
+.education {
+  display: grid;
+  min-height: 100vh;
+}
+
+.education__background {
+  grid-area: 1 / 1;
+  z-index: 0;
+  pointer-events: none;
+  min-height: 100vh;
+}
+
+.education__content {
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 1;
+  padding: 95px 8vw 220px;
+}
+
+.education__header {
+  margin-bottom: 18px;
+}
+
+.education__title {
+  margin: 0;
+}
+
+.education__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-bottom: 56px;
+}
+
+@media (max-width: 900px) {
+  .education__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.education__card {
+  display: flex;
+  flex-direction: column;
+}
+
+.education__card-photo {
+  width: 100%;
+  aspect-ratio: 3 / 1;
+  overflow: hidden;
+}
+
+.education__card-body {
+  padding: 18px 24px;
+}
+
+.education__eyebrow {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-strong);
+}
+
+.education__school {
+  margin: 0 0 8px;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.education__major {
+  margin: 0 0 24px;
+  font-size: 0.95rem;
+  color: var(--color-text-dim);
+  line-height: 1.6;
+}
+
+.education__facts {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.education__fact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.education__fact dt {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--color-text-faint);
+  letter-spacing: 0.04em;
+}
+
+.education__fact dd {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.education__section-title {
+  margin: 0 0 28px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.education__honors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1100px) {
+  .education__honors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.education__honor-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.education__honor-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.education__honor-card-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 32px 16px 12px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--color-text);
+  background: linear-gradient(to top, rgba(6, 10, 18, 0.88), transparent);
+}
+
+.education__honor-card--text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.tilted-card-content__name {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.tilted-card-content__meta {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-text-faint);
+}
+

@@ -1,0 +1,67 @@
+.magic-bento-section {
+  position: relative;
+}
+
+.magic-bento-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--card-radius, 20px);
+  border: var(--card-border-width, 3px) solid var(--card-border, rgba(127, 168, 217, 0.32));
+  background: var(--card-bg, transparent);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 260px;
+}
+
+.magic-bento-card:hover {
+  border-color: var(--card-border-hover, var(--card-border, rgba(127, 168, 217, 0.6)));
+}
+
+.magic-bento-card__body {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+}
+
+/* Cursor-proximity border glow, driven by --glow-x/-y/-intensity/-radius
+   which MagicBentoSpotlight updates on every pointer move. */
+.magic-bento-card--border-glow::after {
+  content: '';
+  position: absolute;
+  /* Extend out to the border's OUTER edge (::after positions to the
+     padding-box by default, which sits inside the border and leaves a
+     visible gap between the border line and the glow ring). */
+  inset: calc(var(--card-border-width, 3px) * -1);
+  padding: var(--glow-ring-width, 6.75px);
+  background: radial-gradient(
+    var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+    rgba(var(--glow-color), var(--glow-intensity)) 0%,
+    rgba(var(--glow-color), calc(var(--glow-intensity) * 0.6)) 35%,
+    transparent 68%
+  );
+  border-radius: inherit;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.magic-bento-card--border-glow:hover {
+  box-shadow: 0 4px 24px rgba(4, 8, 16, 0.4), 0 0 40px rgba(var(--glow-color), 0.45);
+}
+
+.magic-bento-spotlight {
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+  z-index: 200 !important;
+  pointer-events: none;
+}

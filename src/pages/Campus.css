@@ -1,0 +1,30 @@
+.campus {
+  display: grid;
+  min-height: 100vh;
+}
+
+.campus__background {
+  grid-area: 1 / 1;
+  z-index: 0;
+  pointer-events: none;
+  min-height: 100vh;
+}
+
+.campus__content {
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 1;
+  padding: 130px 8vw 80px;
+}
+
+.campus__header {
+  margin-bottom: 40px;
+}
+
+.campus__title {
+  margin: 0;
+}
+
+.campus__gallery {
+  width: 100%;
+}
