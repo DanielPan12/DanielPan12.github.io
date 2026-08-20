@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import FoldText from '../components/reactbits/FoldText';
-import Particles from '../components/reactbits/Particles';
 import PhotoCarousel from '../components/PhotoCarousel';
 import PageTransition from '../components/PageTransition';
 import './Experience.css';
@@ -284,27 +282,7 @@ const Experience = () => {
   return (
     <PageTransition>
       <section className="experience">
-        <div className="experience__background">
-          <Particles
-            particleColors={['#7fa8d9', '#a9c6e8', '#eef2f7']}
-            particleCount={380}
-            particleSpread={10}
-            speed={0.1}
-            particleBaseSize={160}
-            sizeRandomness={1}
-            alphaParticles
-            moveParticlesOnHover={false}
-            disableRotation={false}
-          />
-        </div>
-
         <div className="experience__content">
-          <header className="experience__header">
-            <h1 className="experience__title">
-              <FoldText text="实习经历" splitBy="char" hinge="top" fontSize={48} fontWeight={600} color="#eef2f7" trigger="mount" duration={1.8} stagger={0.1} />
-            </h1>
-          </header>
-
           <div className="experience__layout">
             <aside className="experience__timeline">
               <div className="experience__timeline-track">

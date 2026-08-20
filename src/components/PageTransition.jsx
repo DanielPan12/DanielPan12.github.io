@@ -2,41 +2,29 @@ import { motion } from 'framer-motion';
 import { useTransitionDirection } from '../context/TransitionDirectionContext';
 import './PageTransition.css';
 
-// Three-beat choreography: shrink in place, slide the shrunk page off/on
-// screen, then the new page expands back up. Both the exiting and entering
-// page animate concurrently (not sequentially) so the shrunk pages appear to
-// swap places, matching a slide-carousel feel rather than a plain crossfade.
-const PHASE_TIMES = [0, 0.38, 0.62, 1];
-const EASE = [0.65, 0, 0.35, 1];
-const DURATION = 0.8;
+// The background lives once in App.jsx and never re-mounts on navigation —
+// this only slides the page's own content in/out, so the site reads as one
+// continuous surface rather than whole pages swapping out.
+const EASE = [0.22, 1, 0.36, 1];
+const DURATION = 0.5;
 
 const variants = {
   initial: direction => ({
-    x: direction >= 0 ? '100%' : '-100%',
-    scale: 0.86,
+    x: direction >= 0 ? 48 : -48,
+    opacity: 0,
     zIndex: 2
   }),
-  animate: direction => ({
-    x: [direction >= 0 ? '100%' : '-100%', direction >= 0 ? '100%' : '-100%', 0, 0],
-    scale: [0.86, 0.86, 0.86, 1],
+  animate: {
+    x: 0,
+    opacity: 1,
     zIndex: 2,
-    transition: {
-      duration: DURATION,
-      ease: EASE,
-      x: { times: PHASE_TIMES },
-      scale: { times: PHASE_TIMES }
-    }
-  }),
+    transition: { duration: DURATION, ease: EASE }
+  },
   exit: direction => ({
-    x: [0, 0, direction >= 0 ? '-100%' : '100%', direction >= 0 ? '-100%' : '100%'],
-    scale: [1, 0.86, 0.86, 0.86],
+    x: direction >= 0 ? -48 : 48,
+    opacity: 0,
     zIndex: 1,
-    transition: {
-      duration: DURATION,
-      ease: EASE,
-      x: { times: PHASE_TIMES },
-      scale: { times: PHASE_TIMES }
-    }
+    transition: { duration: DURATION * 0.8, ease: EASE }
   })
 };
 

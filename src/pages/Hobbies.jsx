@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import FoldText from '../components/reactbits/FoldText';
 import DriftWall from '../components/reactbits/DriftWall';
 import PhotoCarousel from '../components/PhotoCarousel';
 import PageTransition from '../components/PageTransition';
@@ -111,12 +110,6 @@ const Hobbies = () => {
     <PageTransition>
       <section className="hobbies">
         <div className="hobbies__content">
-          <header className="hobbies__header">
-            <h1 className="hobbies__title">
-              <FoldText text="个人风采" splitBy="char" hinge="top" fontSize={48} fontWeight={600} color="#eef2f7" trigger="mount" duration={1.8} stagger={0.1} />
-            </h1>
-          </header>
-
           <div className="hobbies__wall">
             <DriftWall
               items={ITEMS}
@@ -130,7 +123,7 @@ const Hobbies = () => {
               depth={45}
               speed={30}
               variance={0.4}
-              dim={0.75}
+              dim={0.95}
               overlayColor="#050a14"
               onTileClick={openCategory}
             />

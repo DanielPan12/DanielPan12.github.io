@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import FoldText from '../components/reactbits/FoldText';
 import SpecularButton from '../components/reactbits/SpecularButton';
-import WebThreads from '../components/reactbits/WebThreads';
 import PageTransition from '../components/PageTransition';
 import './Projects.css';
 
@@ -577,50 +575,41 @@ const Projects = () => {
   return (
     <PageTransition>
       <section className="projects">
-        <div className="projects__background">
-          <WebThreads color1="#7a4dff" color2="#c084fc" color3="#ffffff" threadCount={6} speed={0.2} spread={0.22} />
-        </div>
         <div className="projects__content">
-          <header className="projects__header">
-            <h1 className="projects__title">
-              <FoldText text="项目经历" splitBy="char" hinge="top" fontSize={48} fontWeight={600} color="#eef2f7" trigger="mount" duration={1.8} stagger={0.1} />
-            </h1>
-
-            <div className="projects__filters">
-              <SpecularButton
-                size="sm"
-                radius={999}
-                autoAnimate={!activeTag}
-                tint={!activeTag ? '#7fa8d9' : '#0f1626'}
-                tintOpacity={!activeTag ? 0.22 : 0.55}
-                textColor={!activeTag ? '#a9c6e8' : '#97a3b8'}
-                lineColor={!activeTag ? '#a9c6e8' : '#7fa8d9'}
-                baseColor={!activeTag ? '#7fa8d9' : '#1a2338'}
-                onClick={() => setActiveTag(null)}
-              >
-                全部
-              </SpecularButton>
-              {TAGS.map(tag => {
-                const isActiveTag = activeTag === tag;
-                return (
-                  <SpecularButton
-                    key={tag}
-                    size="sm"
-                    radius={999}
-                    autoAnimate={isActiveTag}
-                    tint={isActiveTag ? '#7fa8d9' : '#0f1626'}
-                    tintOpacity={isActiveTag ? 0.22 : 0.55}
-                    textColor={isActiveTag ? '#a9c6e8' : '#97a3b8'}
-                    lineColor={isActiveTag ? '#a9c6e8' : '#7fa8d9'}
-                    baseColor={isActiveTag ? '#7fa8d9' : '#1a2338'}
-                    onClick={() => setActiveTag(prev => (prev === tag ? null : tag))}
-                  >
-                    {tag}
-                  </SpecularButton>
-                );
-              })}
-            </div>
-          </header>
+          <div className="projects__filters">
+            <SpecularButton
+              size="sm"
+              radius={999}
+              autoAnimate={!activeTag}
+              tint={!activeTag ? '#7fa8d9' : '#0f1626'}
+              tintOpacity={!activeTag ? 0.22 : 0.55}
+              textColor={!activeTag ? '#a9c6e8' : '#97a3b8'}
+              lineColor={!activeTag ? '#a9c6e8' : '#7fa8d9'}
+              baseColor={!activeTag ? '#7fa8d9' : '#1a2338'}
+              onClick={() => setActiveTag(null)}
+            >
+              全部
+            </SpecularButton>
+            {TAGS.map(tag => {
+              const isActiveTag = activeTag === tag;
+              return (
+                <SpecularButton
+                  key={tag}
+                  size="sm"
+                  radius={999}
+                  autoAnimate={isActiveTag}
+                  tint={isActiveTag ? '#7fa8d9' : '#0f1626'}
+                  tintOpacity={isActiveTag ? 0.22 : 0.55}
+                  textColor={isActiveTag ? '#a9c6e8' : '#97a3b8'}
+                  lineColor={isActiveTag ? '#a9c6e8' : '#7fa8d9'}
+                  baseColor={isActiveTag ? '#7fa8d9' : '#1a2338'}
+                  onClick={() => setActiveTag(prev => (prev === tag ? null : tag))}
+                >
+                  {tag}
+                </SpecularButton>
+              );
+            })}
+          </div>
 
           <div
             className="projects__wall"

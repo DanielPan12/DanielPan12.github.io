@@ -36,8 +36,20 @@
   display: flex;
   align-items: center;
   height: var(--nav-h);
-  background: var(--base, #000);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--base, #000) 22%, transparent),
+    color-mix(in srgb, var(--base, #000) 8%, transparent)
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 14px 34px -12px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+    inset 0 0 24px rgba(255, 255, 255, 0.04);
 }
 
 .pill-logo {
@@ -80,7 +92,7 @@
   justify-content: center;
   height: 100%;
   padding: 0 var(--pill-pad-x);
-  background: var(--pill-bg, #fff);
+  background: transparent;
   color: var(--pill-text, var(--base, #000));
   text-decoration: none;
   border-radius: 9999px;
@@ -94,6 +106,11 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+.pill:hover {
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .pill .hover-circle {

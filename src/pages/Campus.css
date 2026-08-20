@@ -1,28 +1,15 @@
 .campus {
-  display: grid;
-  min-height: 100vh;
-}
-
-.campus__background {
-  grid-area: 1 / 1;
-  z-index: 0;
-  pointer-events: none;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .campus__content {
-  grid-area: 1 / 1;
   position: relative;
-  z-index: 1;
-  padding: 130px 8vw 80px;
-}
-
-.campus__header {
-  margin-bottom: 40px;
-}
-
-.campus__title {
-  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 140px 8vw 40px;
 }
 
 .campus__gallery {

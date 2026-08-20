@@ -1,28 +1,10 @@
 .education {
-  display: grid;
-  min-height: 100vh;
-}
-
-.education__background {
-  grid-area: 1 / 1;
-  z-index: 0;
-  pointer-events: none;
   min-height: 100vh;
 }
 
 .education__content {
-  grid-area: 1 / 1;
   position: relative;
-  z-index: 1;
-  padding: 95px 8vw 220px;
-}
-
-.education__header {
-  margin-bottom: 18px;
-}
-
-.education__title {
-  margin: 0;
+  padding: 100px 8vw 220px;
 }
 
 .education__grid {

@@ -1,35 +1,14 @@
 .experience {
-  display: grid;
-  grid-template-rows: minmax(0, 1fr);
   height: 100vh;
   overflow: hidden;
 }
 
-.experience__background {
-  grid-area: 1 / 1;
-  z-index: 0;
-  pointer-events: none;
-  min-height: 100vh;
-  opacity: 0.75;
-}
-
 .experience__content {
-  grid-area: 1 / 1;
   position: relative;
-  z-index: 1;
   height: 100%;
-  padding: 130px 8vw 48px;
+  padding: 100px 8vw 48px;
   display: flex;
   flex-direction: column;
-}
-
-.experience__header {
-  flex-shrink: 0;
-  margin-bottom: 40px;
-}
-
-.experience__title {
-  margin: 0;
 }
 
 .experience__layout {

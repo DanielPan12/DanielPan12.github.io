@@ -1,6 +1,4 @@
-import FoldText from '../components/reactbits/FoldText';
 import MagicBentoSection, { MagicBentoCard } from '../components/reactbits/MagicBento';
-import MoltenMetal from '../components/reactbits/MoltenMetal';
 import PhotoCarousel from '../components/PhotoCarousel';
 import PageTransition from '../components/PageTransition';
 import './Education.css';
@@ -41,35 +39,7 @@ const Education = () => {
   return (
     <PageTransition>
       <section className="education">
-        <div className="education__background">
-          <MoltenMetal
-            color1="#2a1f5c"
-            color2="#3d8bd6"
-            color3="#eef2f7"
-            colorMode="frost"
-            speed={0.18}
-            scale={2}
-            detail={4}
-            glow={2}
-            coreSize={0.13}
-            swirl={1.3}
-            fold={-0.2}
-            blackPoint={0.015}
-            brightness={1.3}
-            grain
-            grainIntensity={0.04}
-            mouseInteraction={false}
-            opacity={0.75}
-          />
-        </div>
-
         <div className="education__content">
-          <header className="education__header">
-            <h1 className="education__title">
-              <FoldText text="教育经历" splitBy="char" hinge="top" fontSize={48} fontWeight={600} color="#eef2f7" trigger="mount" duration={1.8} stagger={0.1} />
-            </h1>
-          </header>
-
           <MagicBentoSection className="education__bento" spotlightRadius={600} glowColor="127, 168, 217">
             <div className="education__grid">
               <MagicBentoCard

@@ -1,6 +1,4 @@
-import FoldText from '../components/reactbits/FoldText';
 import AccordionGallery from '../components/reactbits/AccordionGallery';
-import MoltenMetal from '../components/reactbits/MoltenMetal';
 import PageTransition from '../components/PageTransition';
 import './Campus.css';
 
@@ -47,35 +45,7 @@ const ITEMS = [
 const Campus = () => (
   <PageTransition>
     <section className="campus">
-      <div className="campus__background">
-        <MoltenMetal
-          color1="#0f2a4a"
-          color2="#3d8bd6"
-          color3="#eef2f7"
-          colorMode="frost"
-          speed={0.18}
-          scale={2}
-          detail={4}
-          glow={2}
-          coreSize={0.13}
-          swirl={1.3}
-          fold={-0.2}
-          blackPoint={0.015}
-          brightness={1.3}
-          grain
-          grainIntensity={0.04}
-          mouseInteraction={false}
-          opacity={0.75}
-        />
-      </div>
-
       <div className="campus__content">
-        <header className="campus__header">
-          <h1 className="campus__title">
-            <FoldText text="学生工作" splitBy="char" hinge="top" fontSize={48} fontWeight={600} color="#eef2f7" trigger="mount" duration={1.8} stagger={0.1} />
-          </h1>
-        </header>
-
         <div className="campus__gallery">
           <AccordionGallery items={ITEMS} defaultIndex={0} accentColor="#7fa8d9" overlayColor="#050a14" textColor="#eef2f7" height={520} gap={14} radius={20} />
         </div>

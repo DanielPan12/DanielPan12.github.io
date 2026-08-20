@@ -1,37 +1,19 @@
 .projects {
-  display: grid;
-  grid-template-rows: minmax(0, 1fr);
   height: 100vh;
   overflow: hidden;
 }
 
-.projects__background {
-  grid-area: 1 / 1;
-  z-index: 0;
-  pointer-events: none;
-  min-height: 100vh;
-  opacity: 0.6;
-}
-
 .projects__content {
-  grid-area: 1 / 1;
   position: relative;
-  z-index: 1;
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 130px 8vw 60px;
-}
-
-.projects__header {
-  margin-bottom: 40px;
-}
-
-.projects__title {
-  margin: 0 0 28px;
+  padding: 100px 8vw 60px;
 }
 
 .projects__filters {
+  flex-shrink: 0;
+  margin-bottom: 40px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -60,12 +42,16 @@
   width: var(--size, 120px);
   height: var(--size, 120px);
   border-radius: 50%;
-  border: 1px solid var(--color-border-soft);
-  background: radial-gradient(
-    circle at 32% 26%,
-    color-mix(in srgb, var(--color-accent) 14%, var(--color-bg-elevated)) 0%,
-    color-mix(in srgb, var(--color-bg-elevated) 65%, transparent) 72%
-  );
+  border: 1px solid color-mix(in srgb, var(--color-accent) 25%, var(--color-border-soft));
+  background:
+    radial-gradient(circle at 30% 23%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 22%),
+    radial-gradient(circle at 70% 76%, color-mix(in srgb, var(--color-accent) 30%, transparent) 0%, transparent 55%),
+    radial-gradient(circle at 45% 45%, color-mix(in srgb, var(--color-bg-elevated) 90%, var(--color-accent) 10%) 0%, var(--color-bg-elevated) 100%);
+  box-shadow:
+    inset -10px -12px 20px -8px color-mix(in srgb, var(--color-accent) 40%, transparent),
+    inset 8px 10px 16px -6px rgba(255, 255, 255, 0.14),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.07),
+    0 14px 30px -16px rgba(0, 0, 0, 0.65);
   color: var(--color-text);
   display: flex;
   align-items: center;
@@ -82,7 +68,11 @@
 
 .project-bubble:hover {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent),
+  box-shadow:
+    inset -10px -12px 20px -8px color-mix(in srgb, var(--color-accent) 55%, transparent),
+    inset 8px 10px 16px -6px rgba(255, 255, 255, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent),
     0 18px 36px -16px color-mix(in srgb, var(--color-accent) 55%, transparent);
 }
 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import SiteNav from './components/nav/SiteNav';
-import PageTransition from './components/PageTransition';
+import MoltenMetal from './components/reactbits/MoltenMetal';
 import { TransitionDirectionProvider } from './context/TransitionDirectionContext';
 import { navIndex } from './config/navItems';
 import Home from './pages/Home';
@@ -30,6 +30,28 @@ function App() {
 
   return (
     <div className="app">
+      <div className="app__background">
+        <MoltenMetal
+          color1="#2a1f5c"
+          color2="#3d8bd6"
+          color3="#eef2f7"
+          colorMode="frost"
+          speed={0.18}
+          scale={2}
+          detail={4}
+          glow={2}
+          coreSize={0.13}
+          swirl={1.3}
+          fold={-0.2}
+          blackPoint={0.015}
+          brightness={1.3}
+          grain
+          grainIntensity={0.04}
+          mouseInteraction={false}
+          opacity={0.75}
+        />
+      </div>
+
       <SiteNav />
       <main className="app__main">
         <TransitionDirectionProvider value={direction}>
