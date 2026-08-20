@@ -74,7 +74,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: grayscale(var(--dw-gray)) saturate(0.92);
+  filter: grayscale(var(--dw-gray)) saturate(0.92) brightness(0.6);
   transition: filter 0.42s cubic-bezier(0.22, 1, 0.36, 1);
   user-select: none;
   -webkit-user-drag: none;
@@ -118,7 +118,7 @@
 
 .drift-wall__tile.is-active img,
 .drift-wall__tile:focus-visible img {
-  filter: grayscale(0) saturate(1.05);
+  filter: grayscale(0) saturate(1.05) brightness(1);
 }
 
 .drift-wall__tile.is-active .drift-wall__overlay,
