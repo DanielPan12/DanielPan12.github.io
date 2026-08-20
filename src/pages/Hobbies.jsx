@@ -132,7 +132,8 @@ const Hobbies = () => {
               depth={45}
               speed={30}
               variance={0.4}
-              dim={0.95}
+              dim={1}
+              fade={0.95}
               overlayColor="#050a14"
               onTileClick={openCategory}
             />
