@@ -133,7 +133,7 @@ const Hobbies = () => {
               speed={30}
               variance={0.4}
               dim={1}
-              fade={0.95}
+              fade={0.05}
               overlayColor="#050a14"
               onTileClick={openCategory}
             />
