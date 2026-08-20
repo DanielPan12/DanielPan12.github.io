@@ -5,7 +5,16 @@ import PhotoCarousel from '../components/PhotoCarousel';
 import PageTransition from '../components/PageTransition';
 import './Hobbies.css';
 
-const photo = (folder, file, title) => ({ image: `assets/images/hobbies/${folder}/${file}`, title });
+// `image` is a downscaled thumbnail (~640px, see scripts/build-drift-wall-
+// thumbs.mjs) — the wall renders ~40 duplicated tiles per photo, so the
+// original camera-res files (several 5-15MB) made the page painfully slow
+// to load. `fullImage` is the untouched original, used only by the expanded
+// flyout so that view still shows photos at their real size.
+const photo = (folder, file, title) => ({
+  image: `assets/images/hobbies-thumb/${folder}/${file}`,
+  fullImage: `assets/images/hobbies/${folder}/${file}`,
+  title
+});
 
 const RAW_ITEMS = [
   photo('basketball', '剑桥篮球.jpg', '篮球'),
@@ -73,7 +82,7 @@ const ITEMS = seededShuffle(RAW_ITEMS, 2026);
 // shuffled wall order) — this is what the expanded card shows in full,
 // uncropped size, regardless of which specific tile instance was clicked.
 const PHOTOS_BY_CATEGORY = RAW_ITEMS.reduce((acc, item) => {
-  (acc[item.title] ??= []).push(item.image);
+  (acc[item.title] ??= []).push(item.fullImage);
   return acc;
 }, {});
 
@@ -86,7 +95,7 @@ const Hobbies = () => {
     const vw = window.innerWidth;
     const vh = window.innerHeight;
     const photos = PHOTOS_BY_CATEGORY[item.title] ?? [];
-    const clickedIndex = Math.max(0, photos.indexOf(item.image));
+    const clickedIndex = Math.max(0, photos.indexOf(item.fullImage));
     setExpanded({
       title: item.title,
       initialIndex: clickedIndex,
