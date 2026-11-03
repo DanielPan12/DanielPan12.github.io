@@ -5,15 +5,29 @@ import './Experience.css';
 
 const dateValue = (year, month) => year * 12 + month;
 const RANGE_START = dateValue(2023, 8);
-const RANGE_END = dateValue(2026, 3);
+const RANGE_END = dateValue(2026, 9);
 const percentFor = (year, month) => ((RANGE_END - dateValue(year, month)) / (RANGE_END - RANGE_START)) * 100;
 
 const YEAR_MARKERS = [2026, 2025, 2024, 2023].map(year => ({
   year,
-  percent: percentFor(year, year === 2026 ? 3 : 1)
+  percent: percentFor(year, year === 2026 ? 9 : 1)
 }));
 
 const INTERNSHIPS = [
+  {
+    key: 'meituan',
+    company: '美团',
+    title: '无人机业务部 · 系统工程',
+    duration: '2026.09.16 – 至今',
+    percent: percentFor(2026, 9),
+    highlight: '人形机器人整机研发：需求识别 + 机械臂与灵巧手测试选型 + 遥操作开发',
+    photos: [],
+    summary: [
+      '整机设计与需求识别：在美团无人机业务部担任系统工程实习生，参与人形机器人整机的设计与开发。围绕项目的具体需求开展需求识别工作，将整机研发需求与机械臂、灵巧手等设备的测试、选型及遥操作开发相联系。',
+      '设备测试与方案选型：针对不同机械臂与灵巧手开展设备测试和选型，结合项目需求考察候选设备的适用性，为整机设计中的设备选择提供参考。',
+      '机械臂与灵巧手遥操作开发：负责两类设备的遥操作开发，围绕机械臂与灵巧手的远程操控需求推进开发工作。相关工作持续进行中。'
+    ]
+  },
   {
     key: 'bw',
     company: 'Bowers & Wilkins',
@@ -158,7 +172,7 @@ const Experience = () => {
     if (closestKey) setFocusedKey(closestKey);
   };
 
-  const applyOffset = (value, animate, duration = 0.5, easing = 'cubic-bezier(0.65, 0, 0.35, 1)') => {
+  const applyOffset = (value, animate, duration = 0.5, easing = 'cubic-bezier(0.65, 0, 0.35, 1)', focusedCardKey) => {
     const list = listRef.current;
     if (!list) return;
     const clamped = clampOffset(value);
@@ -167,7 +181,10 @@ const Experience = () => {
     offsetRef.current = clamped;
     list.style.transition = animate ? `transform ${duration}s ${easing}` : 'none';
     list.style.transform = `translateY(${clamped}px)`;
-    updateFocus();
+    // Explicit timeline selections must not be replaced by the old card's
+    // position while the transform and expansion animations are starting.
+    if (focusedCardKey) setFocusedKey(focusedCardKey);
+    else updateFocus();
   };
 
   const scrollToCard = key => {
@@ -176,7 +193,7 @@ const Experience = () => {
     const el = itemRefs.current[key];
     if (!list || !viewport || !el) return;
     const target = viewport.clientHeight / 2 - (el.offsetTop + el.offsetHeight / 2);
-    applyOffset(target, true);
+    applyOffset(target, true, 0.5, undefined, key);
   };
 
   // Soft auto re-center once a scroll settles: nudge the newly-focused card
@@ -204,7 +221,7 @@ const Experience = () => {
     if (directionRef.current > 0 && diff > 0) diff = 0;
     const factor = directionRef.current > 0 ? 0.45 : 0.4;
     const blended = offsetRef.current + diff * factor;
-    applyOffset(blended, true, 1, 'cubic-bezier(0.22, 1, 0.36, 1)');
+    applyOffset(blended, true, 1, 'cubic-bezier(0.22, 1, 0.36, 1)', key);
   };
 
   // Center the first card on mount, and keep the offset valid on resize.
@@ -239,6 +256,7 @@ const Experience = () => {
     let startOffset = 0;
 
     const onPointerDown = e => {
+      if (window.matchMedia('(max-width: 900px)').matches) return;
       if (e.button !== 0) return;
       draggingRef.current = true;
       startY = e.clientY;
@@ -258,6 +276,7 @@ const Experience = () => {
     };
 
     const onWheel = e => {
+      if (window.matchMedia('(max-width: 900px)').matches) return;
       e.preventDefault();
       applyOffset(offsetRef.current - e.deltaY, false);
     };
@@ -328,7 +347,9 @@ const Experience = () => {
                             <p className="experience-item__eyebrow">{item.duration}</p>
                             <p className="experience-item__role">{item.title}</p>
                             <p className="experience-item__highlight">{item.highlight}</p>
-                            <p className="experience-item__summary">{item.summary}</p>
+                            {(Array.isArray(item.summary) ? item.summary : [item.summary]).map(paragraph => (
+                              <p className="experience-item__summary" key={paragraph}>{paragraph}</p>
+                            ))}
                           </div>
 
                           {item.photos.length > 0 && (

@@ -224,3 +224,51 @@
   line-height: 1.8;
   color: var(--color-text-dim);
 }
+
+.experience-item__summary + .experience-item__summary {
+  margin-top: 14px;
+}
+
+/* Keep long internship descriptions readable in the narrow viewport. */
+@media (max-width: 900px) {
+  .app__main:has(.experience) {
+    min-width: 0;
+  }
+
+  .experience__content {
+    padding: 100px 20px 24px;
+  }
+
+  .experience__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .experience__list-viewport {
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
+    cursor: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .experience__list {
+    padding: 0;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto;
+  }
+
+  .experience-item__detail {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .experience-item__bar {
+    padding: 20px 24px;
+  }
+
+  .experience-item__detail-text {
+    padding: 0 24px 24px;
+  }
+}
